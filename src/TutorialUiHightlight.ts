@@ -98,6 +98,10 @@ export namespace TutorialUiHightlight {
 		tutorial_sequence_atom(steps);
 	}
 
+	export function StopTutorial() {
+		tutorial_sequence_atom([]);
+	}
+
 	export function GetStepConfig(step?: string): IStepData {
 		if (step === undefined) return global_config;
 		return config_per_step_map.get(step) ?? global_config;
@@ -171,8 +175,8 @@ export namespace TutorialUiHightlight {
 						Size: UDim2.fromOffset(9999, 9999),
 					},
 					Top: {
-						AnchorPoint: new Vector2(0.5, 1),
-						Position: new UDim2(0.5, 0, 0, -200),
+						AnchorPoint: new Vector2(0, 1),
+						Position: UDim2.fromOffset(-200, -200),
 						Size: UDim2.fromOffset(viewport_size.X + 400, 9999),
 					},
 					TopRight: {
@@ -181,8 +185,8 @@ export namespace TutorialUiHightlight {
 						Size: UDim2.fromOffset(9999, 9999),
 					},
 					Right: {
-						AnchorPoint: new Vector2(0, 0.5),
-						Position: new UDim2(0, viewport_size.X + 200, 0.5, 0),
+						AnchorPoint: new Vector2(0, 0),
+						Position: UDim2.fromOffset(viewport_size.X + 200, -200),
 						Size: UDim2.fromOffset(9999, viewport_size.Y + 400),
 					},
 					BottomRight: {
@@ -191,8 +195,8 @@ export namespace TutorialUiHightlight {
 						Size: UDim2.fromOffset(9999, 9999),
 					},
 					Bottom: {
-						AnchorPoint: new Vector2(0.5, 0),
-						Position: new UDim2(0.5, 0, 0, viewport_size.Y + 200),
+						AnchorPoint: new Vector2(0, 0),
+						Position: UDim2.fromOffset(-200, viewport_size.Y + 200),
 						Size: UDim2.fromOffset(viewport_size.X + 400, 9999),
 					},
 					BottomLeft: {
@@ -201,9 +205,9 @@ export namespace TutorialUiHightlight {
 						Size: UDim2.fromOffset(9999, 9999),
 					},
 					Left: {
-						AnchorPoint: new Vector2(0, 0.5),
-						Position: new UDim2(0, -200, 0.5, 0),
-						Size: UDim2.fromOffset(0, viewport_size.Y + 400),
+						AnchorPoint: new Vector2(1, 0),
+						Position: UDim2.fromOffset(-200, -200),
+						Size: UDim2.fromOffset(9999, viewport_size.Y + 400),
 					},
 					Center: {
 						AnchorPoint: new Vector2(0, 0),
@@ -220,9 +224,9 @@ export namespace TutorialUiHightlight {
 					Size: UDim2.fromOffset(9999, 9999),
 				},
 				Top: {
-					AnchorPoint: new Vector2(0.5, 1),
-					Position: new UDim2(0.5, 0, 0, gui_bounds.Min.Y),
-					Size: UDim2.fromOffset(gui_bounds.Width, gui_bounds.Min.Y),
+					AnchorPoint: new Vector2(0, 1),
+					Position: UDim2.fromOffset(gui_bounds.Min.X, gui_bounds.Min.Y),
+					Size: UDim2.fromOffset(gui_bounds.Width, 9999),
 				},
 				TopRight: {
 					AnchorPoint: new Vector2(0, 1),
@@ -230,7 +234,7 @@ export namespace TutorialUiHightlight {
 					Size: UDim2.fromOffset(9999, 9999),
 				},
 				Right: {
-					AnchorPoint: new Vector2(0, 0.5),
+					AnchorPoint: new Vector2(0, 0),
 					Position: UDim2.fromOffset(gui_bounds.Max.X, gui_bounds.Min.Y),
 					Size: UDim2.fromOffset(9999, gui_bounds.Height),
 				},
@@ -240,23 +244,23 @@ export namespace TutorialUiHightlight {
 					Size: UDim2.fromOffset(9999, 9999),
 				},
 				Bottom: {
-					AnchorPoint: new Vector2(0.5, 0),
-					Position: UDim2.fromOffset(0, gui_bounds.Max.Y),
-					Size: UDim2.fromOffset(gui_bounds.Width, viewport_size.Y),
+					AnchorPoint: new Vector2(0, 0),
+					Position: UDim2.fromOffset(gui_bounds.Min.X, gui_bounds.Max.Y),
+					Size: UDim2.fromOffset(gui_bounds.Width, 9999),
 				},
 				BottomLeft: {
 					AnchorPoint: new Vector2(1, 0),
-					Position: UDim2.fromOffset(-200, gui_bounds.Max.Y),
-					Size: UDim2.fromOffset(9999, viewport_size.Y),
+					Position: UDim2.fromOffset(gui_bounds.Min.X, gui_bounds.Max.Y),
+					Size: UDim2.fromOffset(9999, 9999),
 				},
 				Left: {
-					AnchorPoint: new Vector2(0, 0.5),
-					Position: UDim2.fromOffset(0, gui_bounds.Min.Y),
-					Size: UDim2.fromOffset(gui_bounds.Min.X, gui_bounds.Max.Y),
+					AnchorPoint: new Vector2(1, 0),
+					Position: UDim2.fromOffset(gui_bounds.Min.X, gui_bounds.Min.Y),
+					Size: UDim2.fromOffset(9999, gui_bounds.Height),
 				},
 				Center: {
 					AnchorPoint: new Vector2(0, 0),
-					Position: UDim2.fromOffset(0, 0),
+					Position: UDim2.fromOffset(gui_bounds.Min.X, gui_bounds.Min.Y),
 					Size: UDim2.fromOffset(gui_bounds.Width, gui_bounds.Height),
 				},
 			} satisfies IPartsData;

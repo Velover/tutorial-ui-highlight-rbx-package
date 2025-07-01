@@ -49,6 +49,7 @@ export function HighlightGui() {
 		<screengui
 			Enabled={is_active}
 			ResetOnSpawn={false}			
+			ClipToDeviceSafeArea={false}
 		>
 			<BlackPart key={"TLeft"} PartData={parts.TopLeft} StepConfig={config} />
 			<BlackPart key={"T"} PartData={parts.Top} StepConfig={config} />
