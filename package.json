@@ -34,10 +34,10 @@
 		"typescript": "^5.8.3"
 	},
 	"peerDependencies": {
-		"@rbxts/charm": "^0.10.0+",
-		"@rbxts/react-charm": "^0.3.0+",
-		"@rbxts/react": "^17.2.3+",
-		"@rbxts/react-roblox": "^17.2.3+"
+		"@rbxts/charm": "^0.10.0",
+		"@rbxts/react-charm": "^0.3.0",
+		"@rbxts/react": "^17.2.3",
+		"@rbxts/react-roblox": "^17.2.3"
 	},
 	"dependencies": {
 		"@rbxts/services": "^1.5.5"
