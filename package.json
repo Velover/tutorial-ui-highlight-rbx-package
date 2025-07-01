@@ -1,16 +1,28 @@
 {
 	"name": "@rbxts/tutorial-ui-highlight",
 	"version": "1.0.0",
-	"description": "",
+	"description": "A React-based tutorial UI highlighting system for Roblox TypeScript projects. Create interactive tutorials with customizable overlay highlighting and step-by-step guidance.",
 	"main": "out/init.lua",
 	"scripts": {
 		"build": "rbxtsc",
 		"watch": "rbxtsc -w",
 		"prepublishOnly": "npm run build"
 	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
+	"keywords": [
+		"roblox",
+		"rbxts",
+		"tutorial",
+		"ui",
+		"highlight",
+		"overlay",
+		"guide",
+		"react",
+		"interactive",
+		"onboarding",
+		"walkthrough"
+	],
+	"author": "Catargo",
+	"license": "MIT",
 	"type": "commonjs",
 	"types": "out/index.d.ts",
 	"files": [
@@ -41,5 +53,13 @@
 	},
 	"dependencies": {
 		"@rbxts/services": "^1.5.5"
-	}
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Velover/tutorial-ui-highlight-rbx-package.git"
+	},
+	"bugs": {
+		"url": "https://github.com/Velover/tutorial-ui-highlight-rbx-package/issues"
+	},
+	"homepage": "https://github.com/Velover/tutorial-ui-highlight-rbx-package#readme"
 }
