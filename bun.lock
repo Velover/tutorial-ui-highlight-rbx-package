@@ -4,11 +4,11 @@
     "": {
       "name": "@rbxts/th-pkg",
       "dependencies": {
-        "@rbxts/services": "^1.5.5",
+        "@rbxts/services": "^1.6.0",
       },
       "devDependencies": {
         "@rbxts/compiler-types": "^3.0.0-types.0",
-        "@rbxts/types": "^1.0.860",
+        "@rbxts/types": "^1.0.887",
         "@typescript-eslint/eslint-plugin": "^8.35.1",
         "@typescript-eslint/parser": "^8.35.1",
         "eslint": "^8.57.1",
@@ -20,10 +20,10 @@
         "typescript": "^5.8.3",
       },
       "peerDependencies": {
-        "@rbxts/charm": "^0.10.0+",
-        "@rbxts/react": "^17.2.3+",
-        "@rbxts/react-charm": "^0.3.0+",
-        "@rbxts/react-roblox": "^17.2.3+",
+        "@rbxts/charm": "^0.10.0",
+        "@rbxts/react": "^17.2.3",
+        "@rbxts/react-charm": "^0.3.0",
+        "@rbxts/react-roblox": "^17.2.3",
       },
     },
   },
@@ -62,9 +62,9 @@
 
     "@rbxts/react-vendor": ["@rbxts/react-vendor@17.2.3", "", {}, "sha512-dWCiVelvTK6h920geaFH/OQ5zoWHyhyqyfH51hKx2/iVZ6OiiyNVJ5UqEIkJMG4HsJ8JnkTORizV3+MtQ41BtA=="],
 
-    "@rbxts/services": ["@rbxts/services@1.5.5", "", {}, "sha512-Hu7QH2ecefS60zpakKG3T2vgABydoOJqpSG7nXr59wFAbPk/cA+OcsntYPHUWyHAat0VFGZ5jNZLTLdiqfssvg=="],
+    "@rbxts/services": ["@rbxts/services@1.6.0", "", {}, "sha512-YH02E1/tGHeMXB0Mam8qPdAZa2fjQWdylEscSL4Zn0RIaQeByYImA2qUsXM3nBdhcyKHDwltzSznDKyCGfFEWA=="],
 
-    "@rbxts/types": ["@rbxts/types@1.0.860", "", {}, "sha512-2VHeKFLXglyK5vcZyUp427RJbzVvVLmhNZghpDbt1eT2o1Z4L2cXF9isZu0wBZn0qI4NTZvlS5BjCTzI9J/T6w=="],
+    "@rbxts/types": ["@rbxts/types@1.0.887", "", {}, "sha512-vhp4vIKEfl1TaBcKxBxU5dTFsVNqLkvefoF9pw/Epb+Jk9T+0g4SFQQtBdCu3UdZcBGK/PWk/IJeEyoRNDMkSw=="],
 
     "@roblox-ts/luau-ast": ["@roblox-ts/luau-ast@2.0.0", "", {}, "sha512-cmMi093IdwBOLVxwuordhM8AmtbyTIyRpsTbB0D/JauidW4SXsQRQowSwWjHo4QP0DRJBXvOIlxtqEQi50uNzQ=="],
 
