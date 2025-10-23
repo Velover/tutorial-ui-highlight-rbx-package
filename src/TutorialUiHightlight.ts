@@ -1,7 +1,7 @@
 import { atom, peek } from "@rbxts/charm";
 import React, { useEffect, useMemo, useState } from "@rbxts/react";
 import { useAtom } from "@rbxts/react-charm";
-import { Workspace } from "@rbxts/services";
+import { GuiService, Workspace } from "@rbxts/services";
 
 export namespace TutorialUiHightlight {
 	export interface IStepData {
@@ -171,48 +171,48 @@ export namespace TutorialUiHightlight {
 				return {
 					TopLeft: {
 						AnchorPoint: new Vector2(1, 1),
-						Position: UDim2.fromOffset(-200, -200),
-						Size: UDim2.fromOffset(9999, 9999),
+						Position: ToUdim(-200, -200, viewport_size),
+						Size: ToUdim(9999, 9999, viewport_size),
 					},
 					Top: {
 						AnchorPoint: new Vector2(0, 1),
-						Position: UDim2.fromOffset(-200, -200),
-						Size: UDim2.fromOffset(viewport_size.X + 400, 9999),
+						Position: ToUdim(-200, -200, viewport_size),
+						Size: ToUdim(viewport_size.X + 400, 9999, viewport_size),
 					},
 					TopRight: {
 						AnchorPoint: new Vector2(0, 1),
-						Position: UDim2.fromOffset(viewport_size.X + 200, -200),
-						Size: UDim2.fromOffset(9999, 9999),
+						Position: ToUdim(viewport_size.X + 200, -200, viewport_size),
+						Size: ToUdim(9999, 9999, viewport_size),
 					},
 					Right: {
 						AnchorPoint: new Vector2(0, 0),
-						Position: UDim2.fromOffset(viewport_size.X + 200, -200),
-						Size: UDim2.fromOffset(9999, viewport_size.Y + 400),
+						Position: ToUdim(viewport_size.X + 200, -200, viewport_size),
+						Size: ToUdim(9999, viewport_size.Y + 400, viewport_size),
 					},
 					BottomRight: {
 						AnchorPoint: new Vector2(0, 0),
-						Position: UDim2.fromOffset(viewport_size.X + 200, viewport_size.Y + 200),
-						Size: UDim2.fromOffset(9999, 9999),
+						Position: ToUdim(viewport_size.X + 200, viewport_size.Y + 200, viewport_size),
+						Size: ToUdim(9999, 9999, viewport_size),
 					},
 					Bottom: {
 						AnchorPoint: new Vector2(0, 0),
-						Position: UDim2.fromOffset(-200, viewport_size.Y + 200),
-						Size: UDim2.fromOffset(viewport_size.X + 400, 9999),
+						Position: ToUdim(-200, viewport_size.Y + 200, viewport_size),
+						Size: ToUdim(viewport_size.X + 400, 9999, viewport_size),
 					},
 					BottomLeft: {
 						AnchorPoint: new Vector2(1, 0),
-						Position: UDim2.fromOffset(-200, viewport_size.Y + 200),
-						Size: UDim2.fromOffset(9999, 9999),
+						Position: ToUdim(-200, viewport_size.Y + 200, viewport_size),
+						Size: ToUdim(9999, 9999, viewport_size),
 					},
 					Left: {
 						AnchorPoint: new Vector2(1, 0),
-						Position: UDim2.fromOffset(-200, -200),
-						Size: UDim2.fromOffset(9999, viewport_size.Y + 400),
+						Position: ToUdim(-200, -200, viewport_size),
+						Size: ToUdim(9999, viewport_size.Y + 400, viewport_size),
 					},
 					Center: {
 						AnchorPoint: new Vector2(0, 0),
-						Position: UDim2.fromOffset(0, 0),
-						Size: UDim2.fromOffset(viewport_size.X + 400, viewport_size.Y + 400),
+						Position: ToUdim(0, 0, viewport_size),
+						Size: ToUdim(viewport_size.X + 400, viewport_size.Y + 400, viewport_size),
 					},
 				} satisfies IPartsData;
 			}
@@ -220,51 +220,58 @@ export namespace TutorialUiHightlight {
 			return {
 				TopLeft: {
 					AnchorPoint: new Vector2(1, 1),
-					Position: UDim2.fromOffset(gui_bounds.Min.X, gui_bounds.Min.Y),
-					Size: UDim2.fromOffset(9999, 9999),
+					Position: ToUdim(gui_bounds.Min.X, gui_bounds.Min.Y, viewport_size),
+					Size: ToUdim(9999, 9999, viewport_size),
 				},
 				Top: {
 					AnchorPoint: new Vector2(0, 1),
-					Position: UDim2.fromOffset(gui_bounds.Min.X, gui_bounds.Min.Y),
-					Size: UDim2.fromOffset(gui_bounds.Width, 9999),
+					Position: ToUdim(gui_bounds.Min.X, gui_bounds.Min.Y, viewport_size),
+					Size: ToUdim(gui_bounds.Width, 9999, viewport_size),
 				},
 				TopRight: {
 					AnchorPoint: new Vector2(0, 1),
-					Position: UDim2.fromOffset(gui_bounds.Max.X, gui_bounds.Min.Y),
-					Size: UDim2.fromOffset(9999, 9999),
+					Position: ToUdim(gui_bounds.Max.X, gui_bounds.Min.Y, viewport_size),
+					Size: ToUdim(9999, 9999, viewport_size),
 				},
 				Right: {
 					AnchorPoint: new Vector2(0, 0),
-					Position: UDim2.fromOffset(gui_bounds.Max.X, gui_bounds.Min.Y),
-					Size: UDim2.fromOffset(9999, gui_bounds.Height),
+					Position: ToUdim(gui_bounds.Max.X, gui_bounds.Min.Y, viewport_size),
+					Size: ToUdim(9999, gui_bounds.Height, viewport_size),
 				},
 				BottomRight: {
 					AnchorPoint: new Vector2(0, 0),
-					Position: UDim2.fromOffset(gui_bounds.Max.X, gui_bounds.Max.Y),
-					Size: UDim2.fromOffset(9999, 9999),
+					Position: ToUdim(gui_bounds.Max.X, gui_bounds.Max.Y, viewport_size),
+					Size: ToUdim(9999, 9999, viewport_size),
 				},
 				Bottom: {
 					AnchorPoint: new Vector2(0, 0),
-					Position: UDim2.fromOffset(gui_bounds.Min.X, gui_bounds.Max.Y),
-					Size: UDim2.fromOffset(gui_bounds.Width, 9999),
+					Position: ToUdim(gui_bounds.Min.X, gui_bounds.Max.Y, viewport_size),
+					Size: ToUdim(gui_bounds.Width, 9999, viewport_size),
 				},
 				BottomLeft: {
 					AnchorPoint: new Vector2(1, 0),
-					Position: UDim2.fromOffset(gui_bounds.Min.X, gui_bounds.Max.Y),
-					Size: UDim2.fromOffset(9999, 9999),
+					Position: ToUdim(gui_bounds.Min.X, gui_bounds.Max.Y, viewport_size),
+					Size: ToUdim(9999, 9999, viewport_size),
 				},
 				Left: {
 					AnchorPoint: new Vector2(1, 0),
-					Position: UDim2.fromOffset(gui_bounds.Min.X, gui_bounds.Min.Y),
-					Size: UDim2.fromOffset(9999, gui_bounds.Height),
+					Position: ToUdim(gui_bounds.Min.X, gui_bounds.Min.Y, viewport_size),
+					Size: ToUdim(9999, gui_bounds.Height, viewport_size),
 				},
 				Center: {
 					AnchorPoint: new Vector2(0, 0),
-					Position: UDim2.fromOffset(gui_bounds.Min.X, gui_bounds.Min.Y),
-					Size: UDim2.fromOffset(gui_bounds.Width, gui_bounds.Height),
+					Position: ToUdim(gui_bounds.Min.X, gui_bounds.Min.Y, viewport_size),
+					Size: ToUdim(gui_bounds.Width, gui_bounds.Height, viewport_size),
 				},
 			} satisfies IPartsData;
 		}, [gui_bounds, viewport_size]);
+	}
+
+	function ToUdim(x: number, y: number, viewport_size: Vector2): UDim2 {
+		return UDim2.fromScale(
+			x / viewport_size.X,
+			y / (viewport_size.Y - GuiService.TopbarInset.Height),
+		);
 	}
 
 	export function useReportUiRectRef<T extends GuiBase2d = GuiBase2d>(
